@@ -12,10 +12,11 @@ namespace Integrations.Waste
     {
         public WasteResponseModel GetWaste()
         {
+            
             return new WasteResponseModel
             {
                 WasteType = WasteTypes.Paper,
-                Date = DateTime.Now
+                Date = DateTime.Now.Date
             };
         }
     }

@@ -1,7 +1,9 @@
 ﻿using Entities;
+using Integrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Models.Response;
+using System.Security.AccessControl;
 
 namespace learn.Controllers
 {
@@ -19,9 +21,15 @@ namespace learn.Controllers
         }
 
         [HttpGet(Name = "GetWaste")]
-        public WasteResponseModel Get(string city)
+        public IActionResult Get(string city)
         {
-            return CityWasteRepositoryFactory.GetRepository(city).GetWaste();
+            try{
+                return Ok(CitiesFactory.GetWasteRepository(city).GetWaste());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
