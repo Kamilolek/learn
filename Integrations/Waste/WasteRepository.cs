@@ -14,8 +14,8 @@ namespace Integrations.Waste
         {
             return new WasteResponseModel
             {
-                WasteType = WasteTypes.Paper,
-                Date = DateTime.Now.Date
+                WasteType = WasteTypes.Other,
+                Date = new DateTime(0000, 0, 0)
             };
         }
     }

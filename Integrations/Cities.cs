@@ -10,18 +10,13 @@ namespace Integrations
 {
     public class City
     {
-        public string? Name { get; set; }
-        public string? Url { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Url { get; set; } = string.Empty;
         public Services[] AvailableServices { get; set; } = Array.Empty<Services>();
-        public IWasteRepository? WasteRepository { get; set; }
+        public IWasteRepository WasteRepository { get; set; } = new WasteRepository();
     }
     public class Cities
     {
-        private readonly IWasteRepository _wasteRepository;
-        public Cities(IWasteRepository wasteRepository)
-        {
-            _wasteRepository = wasteRepository;
-        }
         private readonly static City Sosnowiec = new()
         {
             Name = "Sosnowiec",
@@ -38,15 +33,12 @@ namespace Integrations
     
         public static City GetCity(string name)
         {
-            switch (name.ToLower())
+            return name.ToLower() switch
             {
-                case "sosnowiec":
-                    return Sosnowiec;
-                case "katowice":
-                    return Katowice;
-                default:
-                    throw new Exception("City not found");
-            }
+                "sosnowiec" => Sosnowiec,
+                "katowice" => Katowice,
+                _ => throw new Exception("City not found"),
+            };
         }
     }
 }
