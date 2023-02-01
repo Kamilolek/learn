@@ -2,6 +2,7 @@
 using Integrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Models.Response;
 
 namespace learn.Controllers
 {
@@ -26,7 +27,7 @@ namespace learn.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new ExceptionResponseModel(e.Message));
             }
         }
     }

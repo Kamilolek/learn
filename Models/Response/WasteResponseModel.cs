@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models.Response
 {
-    public class WasteResponseModel
+    public record WasteResponseModel
     {
         public WasteType WasteType { get; set; }
         public DateTime Date { get; set; }
