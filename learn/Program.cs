@@ -1,6 +1,9 @@
+using Entities;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Globalization;
 
@@ -12,6 +15,7 @@ namespace learn
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddLocalization();
+            builder.Services.AddDbContext < MMContext > ();
             // Add services to the container.
 
             builder.Services.AddControllers();

@@ -10,12 +10,12 @@ namespace Integrations.Waste
 {
     public class SosnowiecWasteRepository : IWasteRepository
     {
-        public WasteResponseModel GetWaste()
+        public WasteResponseModel GetWaste(string lang)
         {
             
             return new WasteResponseModel
             {
-                WasteType = WasteTypes.Paper,
+                WasteType = WasteTypes.GetWasteTypeObject("en"),
                 Date = DateTime.Now.Date
             };
         }

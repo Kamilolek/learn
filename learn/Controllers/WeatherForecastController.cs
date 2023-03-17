@@ -24,7 +24,7 @@ namespace learn.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public string Get()
         {
-            return _localizer["hello"];
+            return "";
         }
     }
 }

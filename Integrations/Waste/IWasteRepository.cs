@@ -4,6 +4,6 @@ namespace Integrations.Waste
 {
     public interface IWasteRepository
     {
-        WasteResponseModel GetWaste();
+        WasteResponseModel GetWaste(string lang);
     }
 }

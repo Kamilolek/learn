@@ -9,7 +9,7 @@ namespace Models.Response
 {
     public record WasteResponseModel
     {
-        public WasteType WasteType { get; set; }
+        public WasteTypeObject WasteType { get; set; }
         public DateTime Date { get; set; }
         
     }

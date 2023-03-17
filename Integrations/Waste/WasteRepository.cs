@@ -10,13 +10,14 @@ namespace Integrations.Waste
 {
     public class WasteRepository : IWasteRepository
     {
-        public WasteResponseModel GetWaste()
+        public WasteResponseModel GetWaste(string lang)
         {
             return new WasteResponseModel
             {
-                WasteType = WasteTypes.Other,
+                WasteType = WasteTypes.GetWasteTypeObject(lang),
                 Date = new DateTime(0000, 0, 0)
             };
         }
+
     }
 }

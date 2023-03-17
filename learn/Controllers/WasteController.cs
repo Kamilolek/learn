@@ -19,11 +19,29 @@ namespace learn.Controllers
             _localizer = localizer;
         }
 
-        [HttpGet(Name = "GetWaste")]
+        [HttpGet("GetWaste", Name = "GetWaste")]
         public IActionResult Get(string city)
         {
             try{
-                return Ok(CitiesFactory.GetWasteRepository(city).GetWaste());
+                string lang = Request.Headers.AcceptLanguage;
+                return Ok(CitiesFactory
+                    .GetWasteRepository(city)
+                    .GetWaste(lang ?? ""));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new ExceptionResponseModel(e.Message));
+            }
+        }
+        [HttpGet("Outages")]
+        public IActionResult GetOutages(string city)
+        {
+            try
+            {
+                string lang = Request.Headers.AcceptLanguage;
+                return Ok(CitiesFactory
+                          .GetOutagesRepository(city)
+                          .GetOutage(lang ?? ""));
             }
             catch (Exception e)
             {

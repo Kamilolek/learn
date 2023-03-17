@@ -10,11 +10,11 @@ namespace Integrations.Waste
 {
     public class KatowiceWasteRepository : IWasteRepository
     {
-        public WasteResponseModel GetWaste()
+        public WasteResponseModel GetWaste(string lang)
         {
             return new WasteResponseModel
             {
-                WasteType = WasteTypes.Paper,
+                WasteType = WasteTypes.GetWasteTypeObject(lang),
                 Date = DateTime.Now
             };
         }
